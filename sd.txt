@@ -1,0 +1,19 @@
+counter = 0;
+var interval = setInterval(() => {
+    const divs = document.querySelectorAll('div[aria-label="Reaktionen"]');
+    for(const div of divs){
+        const children = Array.from(div.children).slice(0, -1);
+        for(child of children){
+            const btn = child.children[0].children[0].children[0];
+            const btnName = btn.children[0].getAttribute("alt");
+            
+            if(btn.getAttribute("aria-pressed") != "true" && (btnName == "dps2" || btnName == "dps1")){
+                btn.click();
+                console.log("Clicked: " + btnName);
+            }
+        }
+    }
+}, 300);
+
+
+clearInterval(interval);
